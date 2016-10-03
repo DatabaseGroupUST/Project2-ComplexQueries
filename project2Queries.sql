@@ -1,3 +1,7 @@
+--A 1,3,4,5,8
+--N 2,10,11,12,13,14
+--C 6,7,9,15,16
+
 --Query 1
 SELECT first_name, last_name
     FROM person
