@@ -3,12 +3,15 @@
 --C 6,7,9,15,16
 
 --Query 1
-SELECT first_name, last_name
-    FROM person
-    WHERE admission IN	
-        (SELECT admission
-         FROM student
-         WHERE admission= 2016);
+SELECT
+    person.person_id,
+    first_name,
+    last_name
+FROM
+    person
+JOIN student ON
+    person.person_id = student.person_id
+WHERE student.admission = 2016;
 
 --Query 2
 --This query does not account for time of year.
@@ -49,7 +52,7 @@ SELECT DISTINCT state
 
 --Query 10
 --This does not account for time of year.
-SELECT AVG(admission - EXTRACT(YEAR FROM date_of_birth)) AS average_age, major 
+SELECT AVG(EXTRACT(YEAR FROM date_of_birth)) AS average_age, major 
 FROM
     (SELECT 
         person.date_of_birth,
