@@ -59,7 +59,7 @@ JOIN student ON
     person.person_id = student.person_id
 WHERE major = 'MATH';
 
---Query 11
+--Query 9 
 --Too complicated?
 SELECT
     student_id_count,
