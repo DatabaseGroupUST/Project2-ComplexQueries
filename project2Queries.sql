@@ -27,28 +27,62 @@ FROM
         person.person_id = student.person_id) AS newTable;
 
 --Query 3
-SELECT first_name, last_name
-    FROM person
-    WHERE major IN
-        (SELECT major
-         FROM student
-         WHERE major= 'MATH');
-
+SELECT 
+    person.person_ID,
+    person.first_name,
+    person.last_name,
+    student.major
+FROM
+    person
+JOIN student ON
+    person.person_id = student.person_id
+WHERE 
+    major = 'MATH';
+ 
 --Query 4
-SELECT DISTINCT state
-    FROM person
-    WHERE admission IN
-        (SELECT admission
-         FROM student
-         WHERE admission= 2016);
+SELECT DISTINCT
+    state
+FROM
+    person
+JOIN student ON
+    person.person_id = student.person_id
+WHERE
+    admission = 2016;
 
 --Query 5
-SELECT DISTINCT state
-    FROM person
-    WHERE major IN
-        (SELECT major
-         FROM student
-         WHERE major= 'MATH');
+--Does distince apply at the end?
+SELECT DISTINCT
+    state
+FROM
+    person
+JOIN student ON
+    person.person_id = student.person_id
+WHERE major = 'MATH';
+
+--Query 11
+--Too complicated?
+SELECT
+    student_id_count,
+    course_number,
+    department,
+    year,
+    semester
+FROM
+    (SELECT
+        COUNT(student_id) AS student_id_count,
+        course_number,
+        department,
+        year,
+        semester
+    FROM
+        enroll
+    GROUP BY
+        course_number,
+        department,
+        year,
+        semester) AS tempTable
+WHERE 
+    student_id_count >= 10;
 
 --Query 10
 --This does not account for time of year.
