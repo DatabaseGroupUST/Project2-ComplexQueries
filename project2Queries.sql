@@ -59,6 +59,13 @@ JOIN student ON
     person.person_id = student.person_id
 WHERE major = 'MATH';
 
+--Query 8
+SELECT faculty.person_id, first_name, last_name
+	FROM faculty JOIN person ON 
+		faculty.person_id = person.person_id
+	WHERE faculty.department IS NULL;
+
+
 --Query 9 
 --Too complicated?
 SELECT
