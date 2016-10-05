@@ -60,11 +60,24 @@ JOIN student ON
 WHERE major = 'MATH';
 
 --Query 8
-SELECT faculty.person_id, first_name, last_name
-	FROM faculty JOIN person ON 
-		faculty.person_id = person.person_id
-	WHERE faculty.department IS NULL;
-
+SELECT DISTINCT 
+    faculty.person_id,
+    person.first_name,
+    person.last_name
+FROM
+    faculty
+JOIN person ON
+    faculty.person_id = person.person_id
+WHERE
+    faculty.person_id
+NOT IN
+    (SELECT 
+        faculty.person_id 
+    FROM
+        faculty
+    JOIN section ON 
+        faculty.person_id = section.instructor
+    WHERE faculty.department = section.department);
 
 --Query 9 
 --Too complicated?
