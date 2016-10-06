@@ -51,7 +51,6 @@ WHERE
     admission = 2016;
 
 --Query 5
---Does distince apply at the end?
 SELECT DISTINCT
     state
 FROM
@@ -103,7 +102,6 @@ NOT IN
     WHERE faculty.department = section.department);
 
 --Query 9 
---Too complicated?
 SELECT
     student_id_count,
     course_number,
@@ -128,7 +126,6 @@ WHERE
     student_id_count >= 10;
 
 --Query 10
---This does not account for time of year.
 SELECT AVG(TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE())) AS average_age, major 
 FROM
     (SELECT 
@@ -141,7 +138,6 @@ FROM
 GROUP BY major;
 
 --Query 11
---The names can be fixed up a bit, but i think it works
 SELECT
     (students_null / (students_notnull + students_null)) AS fraction_null,
     course_number
@@ -184,10 +180,6 @@ WHERE tempTable.person_id NOT IN (SELECT student_id
                                   FROM enroll 
                                   WHERE department = 'MATH');
 
-
---Query 15, my interpretation of "not taking any courses"
-DELETE FROM enroll WHERE year<2014 AND grade IS NULL;
-
 --Query 16
 UPDATE enroll
 	SET grade = 'F'
@@ -195,7 +187,7 @@ UPDATE enroll
 
 
 --Query 17
---List the top 5 popular professors as defined as teaches the average most amount of students
+--List the top 5 popular professors as defined as the professor that teaches the most average amount of students
 SELECT
     AVG(tempTable2.counted_students) AS average_students,
     tempTable2.instructor,
