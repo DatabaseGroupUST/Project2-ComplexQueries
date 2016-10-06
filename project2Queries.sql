@@ -59,6 +59,22 @@ JOIN student ON
     person.person_id = student.person_id
 WHERE major = 'MATH';
 
+--Query 6
+SELECT DISTINCT 
+first_name, last_name 
+	FROM person 
+	JOIN faculty 
+	JOIN student  
+		ON faculty.person_id = student.person_id;
+        
+--Query 7
+SELECT
+first_name, last_name
+	FROM person
+	WHERE person_id NOT IN(SELECT person_id FROM student) AND
+	person_id NOT IN (SELECT person_id FROM faculty) AND
+	YEAR(date_of_birth) < 1990;
+
 --Query 8
 SELECT DISTINCT 
     faculty.person_id,
@@ -161,6 +177,7 @@ FROM
 WHERE tempTable.person_id NOT IN (SELECT student_id
                                   FROM enroll 
                                   WHERE department = 'MATH');
+<<<<<<< HEAD
 --Query 17
 --List the top 5 popular professors as defined as teaches the average most amount of students
 SELECT
@@ -200,3 +217,14 @@ ON
 GROUP BY instructor
 ORDER BY average_students ASC 
 LIMIT 5;
+=======
+
+--Query 15, my interpretation of "not taking any courses"
+DELETE FROM enroll WHERE year<2014 AND grade IS NULL;
+
+
+--Query 16
+UPDATE enroll
+	SET grade = 'F'
+	WHERE enroll.year = 2016 AND enroll.semester = 'Spring' AND enroll.grade IS NULL;
+>>>>>>> fa4ff497ae8a46d852a5202ebf81ce980b33d308
