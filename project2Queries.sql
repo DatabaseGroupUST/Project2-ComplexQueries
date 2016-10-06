@@ -180,3 +180,9 @@ WHERE tempTable.person_id NOT IN (SELECT student_id
 
 --Query 15, my interpretation of "not taking any courses"
 DELETE FROM enroll WHERE year<2014 AND grade IS NULL;
+
+
+--Query 16
+UPDATE enroll
+	SET grade = 'F'
+	WHERE enroll.year = 2016 AND enroll.semester = 'Spring' AND enroll.grade IS NULL;
