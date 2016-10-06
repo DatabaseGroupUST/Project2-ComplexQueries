@@ -1,6 +1,6 @@
 --Nicholas Hayden
---
---
+--Claude Robin
+--Alexander Avila
 
 --Query 1
 SELECT
@@ -178,6 +178,16 @@ WHERE tempTable.person_id NOT IN (SELECT student_id
                                   FROM enroll 
                                   WHERE department = 'MATH');
 
+
+--Query 15, my interpretation of "not taking any courses"
+DELETE FROM enroll WHERE year<2014 AND grade IS NULL;
+
+--Query 16
+UPDATE enroll
+	SET grade = 'F'
+	WHERE enroll.year = 2016 AND enroll.semester = 'Spring' AND enroll.grade IS NULL;
+
+
 --Query 17
 --List the top 5 popular professors as defined as teaches the average most amount of students
 SELECT
@@ -219,12 +229,4 @@ ORDER BY average_students ASC
 LIMIT 5;
 
 
---Query 15, my interpretation of "not taking any courses"
-DELETE FROM enroll WHERE year<2014 AND grade IS NULL;
-
-
---Query 16
-UPDATE enroll
-	SET grade = 'F'
-	WHERE enroll.year = 2016 AND enroll.semester = 'Spring' AND enroll.grade IS NULL;
 
