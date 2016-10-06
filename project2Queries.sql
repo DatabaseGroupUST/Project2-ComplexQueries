@@ -17,8 +17,6 @@ JOIN student ON
 WHERE student.admission = 2016;
 
 --Query 2
---This query does not account for time of year.
---Does this query need to?
 SELECT AVG(admission - EXTRACT(YEAR FROM date_of_birth)) AS average_age  
 FROM
     (SELECT 
