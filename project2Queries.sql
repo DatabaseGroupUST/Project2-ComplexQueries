@@ -59,6 +59,22 @@ JOIN student ON
     person.person_id = student.person_id
 WHERE major = 'MATH';
 
+--Query 6
+SELECT DISTINCT 
+first_name, last_name 
+	FROM person 
+	JOIN faculty 
+	JOIN student  
+		ON faculty.person_id = student.person_id;
+        
+--Query 7
+SELECT
+first_name, last_name
+	FROM person
+	WHERE person_id NOT IN(SELECT person_id FROM student) AND
+	person_id NOT IN (SELECT person_id FROM faculty) AND
+	YEAR(date_of_birth) < 1990;
+
 --Query 8
 SELECT DISTINCT 
     faculty.person_id,
@@ -162,3 +178,5 @@ WHERE tempTable.person_id NOT IN (SELECT student_id
                                   FROM enroll 
                                   WHERE department = 'MATH');
 
+--Query 15, my interpretation of "not taking any courses"
+DELETE FROM enroll WHERE year<2014 AND grade IS NULL;
