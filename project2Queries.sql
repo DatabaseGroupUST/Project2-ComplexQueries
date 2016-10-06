@@ -133,7 +133,6 @@ SELECT AVG(EXTRACT(YEAR FROM date_of_birth)) AS average_age, major
 FROM
     (SELECT 
         person.date_of_birth,
-        student.admission,
         student.major
      FROM
         person
