@@ -76,6 +76,21 @@ first_name, last_name
 	person_id NOT IN (SELECT person_id FROM faculty) AND
 	YEAR(date_of_birth) < 1990;
 
+SELECT DISTINCT 
+    person_id,
+    first_name,
+    last_name 
+FROM
+    person 
+WHERE person_id IN (SELECT
+                            person_id
+                        FROM
+                            faculty) 
+AND person_id   IN (SELECT 
+                            person_id
+                        FROM
+                            student);
+			    
 --Query 8
 SELECT DISTINCT 
     faculty.person_id,
