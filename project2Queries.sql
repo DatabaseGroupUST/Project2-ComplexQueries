@@ -60,13 +60,13 @@ JOIN student ON
     person.person_id = student.person_id
 WHERE major = 'MATH';
 
---Query 6
+--Query 6		
 SELECT DISTINCT 
 first_name, last_name 
-	FROM person 
-	JOIN faculty 
-	JOIN student  
-		ON faculty.person_id = student.person_id;
+FROM person  JOIN faculty  JOIN student   
+	ON
+	person.person_id = faculty.person_id AND
+	person.person_id = student.person_id;
         
 --Query 7
 SELECT
