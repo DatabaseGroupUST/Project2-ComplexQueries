@@ -231,7 +231,7 @@ JOIN
 ON
     person.person_id = tempTable2.instructor
 GROUP BY instructor
-ORDER BY average_students ASC 
+ORDER BY average_students DESC
 LIMIT 5;
 
 
