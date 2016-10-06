@@ -1,11 +1,11 @@
---Nicholas Hayden
---Claude Robin
---Alexander Avila
+-- Nicholas Hayden
+-- Claude Robin
+-- Alexander Avila
 --
 -- Project 2
 -- We skipped 12 and 13
 
---Query 1
+-- Query 1
 SELECT
     person.person_id,
     first_name,
@@ -16,7 +16,7 @@ JOIN student ON
     person.person_id = student.person_id
 WHERE student.admission = 2016;
 
---Query 2
+-- Query 2
 SELECT AVG(admission - EXTRACT(YEAR FROM date_of_birth)) AS average_age  
 FROM
     (SELECT 
@@ -27,7 +27,7 @@ FROM
      JOIN student ON
         person.person_id = student.person_id) AS newTable;
 
---Query 3
+-- Query 3
 SELECT 
     person.person_ID,
     person.first_name,
@@ -40,7 +40,7 @@ JOIN student ON
 WHERE 
     major = 'MATH';
  
---Query 4
+-- Query 4
 SELECT DISTINCT
     state
 FROM
@@ -50,7 +50,7 @@ JOIN student ON
 WHERE
     admission = 2016;
 
---Query 5
+-- Query 5
 SELECT DISTINCT
     state
 FROM
@@ -59,7 +59,7 @@ JOIN student ON
     person.person_id = student.person_id
 WHERE major = 'MATH';
 
---Query 6		
+-- Query 6		
 SELECT DISTINCT 
     first_name,
     last_name 
@@ -69,7 +69,7 @@ JOIN faculty JOIN student ON
     person.person_id = faculty.person_id AND
     person.person_id = student.person_id;
         
---Query 7
+-- Query 7
 SELECT
     first_name,
     last_name
@@ -81,7 +81,7 @@ WHERE
     YEAR(date_of_birth) < 1990;
 
     
---Query 8
+-- Query 8
 SELECT DISTINCT 
     faculty.person_id,
     person.first_name,
@@ -101,7 +101,7 @@ NOT IN
         faculty.person_id = section.instructor
     WHERE faculty.department = section.department);
 
---Query 9 
+-- Query 9 
 SELECT
     student_id_count,
     course_number,
@@ -125,7 +125,7 @@ FROM
 WHERE 
     student_id_count >= 10;
 
---Query 10
+-- Query 10
 SELECT AVG(TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE())) AS average_age, major 
 FROM
     (SELECT 
@@ -137,7 +137,7 @@ FROM
         person.person_id = student.person_id) AS newTable
 GROUP BY major;
 
---Query 11
+-- Query 11
 SELECT
     (students_null / (students_notnull + students_null)) AS fraction_null,
     course_number
@@ -159,7 +159,7 @@ FROM
             semester = 'Spring' AND year = '2016') AS tempTable
      GROUP BY course_number) AS tempTable2;
 
---Query 14
+-- Query 14
 SELECT
     person_id,
     first_name,
@@ -180,14 +180,14 @@ WHERE tempTable.person_id NOT IN (SELECT student_id
                                   FROM enroll 
                                   WHERE department = 'MATH');
 
---Query 16
+-- Query 16
 UPDATE enroll
 	SET grade = 'F'
 	WHERE enroll.year = 2016 AND enroll.semester = 'Spring' AND enroll.grade IS NULL;
 
 
---Query 17
---List the top 5 popular professors as defined as the professor that teaches the most average amount of students
+-- Query 17
+-- List the top 5 popular professors as defined as the professor that teaches the most average amount of students
 SELECT
     AVG(tempTable2.counted_students) AS average_students,
     tempTable2.instructor,
