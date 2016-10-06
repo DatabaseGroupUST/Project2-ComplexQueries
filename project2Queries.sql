@@ -72,21 +72,15 @@ JOIN faculty JOIN student ON
         
 --Query 7
 SELECT
-first_name, last_name
-	FROM person
-	WHERE person_id NOT IN(SELECT person_id FROM student) AND
-	person_id NOT IN (SELECT person_id FROM faculty) AND
-	YEAR(date_of_birth) < 1990;
-
-SELECT DISTINCT 
     first_name,
-    last_name 
-FROM
-    person 
-JOIN faculty JOIN student ON
-    person.person_id != faculty.person_id AND
-    person.person_id != student.person_id
-WHERE YEAR(date_of_birth) < 1990;
+    last_name
+FROM 
+    person
+WHERE 
+    person_id NOT IN (SELECT person_id FROM student) AND
+    person_id NOT IN (SELECT person_id FROM faculty) AND
+    YEAR(date_of_birth) < 1990;
+
     
 --Query 8
 SELECT DISTINCT 
