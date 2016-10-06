@@ -1,6 +1,9 @@
 --Nicholas Hayden
 --Claude Robin
 --Alexander Avila
+--
+-- Project 2
+-- We skipped 12 and 13
 
 --Query 1
 SELECT
