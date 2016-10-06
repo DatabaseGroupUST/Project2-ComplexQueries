@@ -1,6 +1,6 @@
---A 1,3,4,5,8
---N 2,10,11,12,13,14
---C 6,7,9,15,16
+--Nicholas Hayden
+--
+--
 
 --Query 1
 SELECT
@@ -177,7 +177,7 @@ FROM
 WHERE tempTable.person_id NOT IN (SELECT student_id
                                   FROM enroll 
                                   WHERE department = 'MATH');
-<<<<<<< HEAD
+
 --Query 17
 --List the top 5 popular professors as defined as teaches the average most amount of students
 SELECT
@@ -217,7 +217,7 @@ ON
 GROUP BY instructor
 ORDER BY average_students ASC 
 LIMIT 5;
-=======
+
 
 --Query 15, my interpretation of "not taking any courses"
 DELETE FROM enroll WHERE year<2014 AND grade IS NULL;
@@ -227,4 +227,4 @@ DELETE FROM enroll WHERE year<2014 AND grade IS NULL;
 UPDATE enroll
 	SET grade = 'F'
 	WHERE enroll.year = 2016 AND enroll.semester = 'Spring' AND enroll.grade IS NULL;
->>>>>>> fa4ff497ae8a46d852a5202ebf81ce980b33d308
+
