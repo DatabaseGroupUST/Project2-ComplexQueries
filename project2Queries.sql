@@ -129,7 +129,7 @@ WHERE
 
 --Query 10
 --This does not account for time of year.
-SELECT AVG(TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE()) AS average_age, major 
+SELECT AVG(TIMESTAMPDIFF(YEAR,date_of_birth,CURDATE())) AS average_age, major 
 FROM
     (SELECT 
         person.date_of_birth,
