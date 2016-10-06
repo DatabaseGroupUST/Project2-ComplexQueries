@@ -66,7 +66,7 @@ SELECT DISTINCT
     last_name 
 FROM
     person 
-JOIN faculty, student ON
+JOIN faculty JOIN student ON
     person.person_id = faculty.person_id AND
     person.person_id = student.person_id;
         
